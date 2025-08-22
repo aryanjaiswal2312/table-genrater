@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <style>
+        body {
+            background-image: url("background\ image.jpg");
+            padding-top: 100px;
+        }
+
+        .card {
+            width: 40%;
+            position: relative;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            padding: 20px;
+            border: 1px solid #00b6c7;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px 4px #3a3ae35e;
+            font-family: math;
+            transition: box-shadow 4s;
+        }
+
+        .card:hover {
+            box-shadow: 7px 7px 10px 13px #3a3ae35e;
+        }
+
+        h2 {
+            margin: auto;
+            font-weight: bold;
+            font-size: 60px;
+            color: #0000ff6e;
+        }
+
+        input[type="number"] {
+            width: 20%;
+            margin: auto;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #0000ff4a;
+        }
+
+        div#user\ vlaue {
+            text-transform: capitalize;
+            font-size: 25px;
+            font-family: monospace;
+            margin: auto;
+        }
+
+        h2:hover {
+            color: rgba(67, 113, 239, 0.885);
+        }
+
+        p#error {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            font-size: 20px;
+            color: red;
+            font-family: monospace;
+            text-transform: capitalize;
+        }
+
+        button#btn {
+            padding: 10px;
+            font-size: 22px;
+            border: none;
+            background: #249fbd4a;
+            border-radius: 29px;
+            width: 50%;
+            margin: auto;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid #19acef8c;
+            border-radius: 5px;
+        }
+
+        div#\32 btn {
+            display: flex;
+            flex-direction: column;
+            gap: 21px;
+        }
+
+        .headingBox {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        #rendom {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            background: #249fbd4a;
+            border-radius: 29px;
+            margin: auto;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        .dateBox {
+            border: 1px solid #6459cdbd;
+            padding: 10px;
+            font-size: 20px;
+            display: flex;
+            font-weight: bold;
+            text-align: start;
+            border-radius: 27px;
+            justify-content: space-around;
+        }
+
+        #reset {
+            padding: 10px;
+            font-size: 20px;
+            border: none;
+            background: #249fbd4a;
+            border-radius: 29px;
+            width: 25%;
+            margin: auto;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="dateBox">
+            <div>
+                Date : <span id="dateSpan"> </span>
+            </div>
+            <div>
+                Time: <span id="timespan"></span>
+            </div>
+        </div>
+        <div class="headingBox">
+            <h2>Table</h2>
+            <div id="2btn">
+                <button id="rendom">Rendem Table </button>
+            </div>
+        </div>
+        <hr>
+        <div id="user vlaue">
+            talbe of:
+            <input type="number" id="tableof" placeholder="enter number">
+            Up To:<input type="number" id="tableupto" min="1" max="10" placeholder="enter number">
+            <div id="show table"></div>
+        </div>
+        <div id="last-box">
+            <button id="btn"> show table </button>
+            <button id="reset"> reset </button>
+        </div>
+
+        <p id="error"></p>
+    </div>
+    <script>
+        let rendom = document.getElementById("rendom");
+        let btn = document.getElementById("btn");
+        let divToShowTable = document.getElementById("show table");
+        let error = document.getElementById("error");
+        let reset = document.getElementById("reset");
+        let datespan = document.getElementById("dateSpan");
+        let timespan = document.getElementById("timespan");
+        let fulldate = new Date();
+        let date = fulldate.getDate();
+        let month = fulldate.getMonth();
+        let year = fulldate.getFullYear();
+        datespan.innerText = `${date}/${month}/${year}`
+        timespan.innerText = ` ${fulldate.getHours()} : ${fulldate.getMinutes()}`
+
+        reset.addEventListener("click", () => {
+            window.location.href = "rendam table .html"
+        })
+
+        rendom.addEventListener("click", (e) => {
+            let min = 1; let max = 10;
+            let rendomVal = Math.floor(Math.random() * (max - min) + min);
+            let table;
+
+            loop(rendomVal, 10);
+            rendom.disabled = true;
+            btn.disabled = true;
+        })
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            let tableLength = document.getElementById("tableupto").value.trim();
+            let tableof = document.getElementById("tableof").value.trim();
+
+            if (tableLength == 0 || tableof == 0) {
+                error.innerText = "plz fill both filled";
+                btn.disabled = false;
+            } else {
+                error.innerText = "";
+                btn.disabled = true;
+                rendom.disabled = true;
+            }
+
+            loop(tableof, tableLength);
+        })
+
+        function loop(val, length) {
+            let table;
+            for (let i = 1; i <= length; i++) {
+                table = i * val;
+                let child = document.createElement("div");
+                child.innerHTML = `<p>${val} X ${i} = ${table}</p><hr>`
+                divToShowTable.appendChild(child)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
