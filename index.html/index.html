@@ -170,12 +170,15 @@
         let reset = document.getElementById("reset");
         let datespan = document.getElementById("dateSpan");
         let timespan = document.getElementById("timespan");
-        let fulldate = new Date();
-        let date = fulldate.getDate();
-        let month = fulldate.getMonth();
-        let year = fulldate.getFullYear();
-        datespan.innerText = `${date}/${month}/${year}`
-        timespan.innerText = ` ${fulldate.getHours()} : ${fulldate.getMinutes()}`
+
+        setInterval(() => {
+            let fulldate = new Date();
+            let date = fulldate.getDate();
+            let month = fulldate.getMonth();
+            let year = fulldate.getFullYear();
+            datespan.innerText = `${date}/${month}/${year}`
+            timespan.innerText = ` ${fulldate.getHours()} : ${fulldate.getMinutes()}`
+        }, 1000);
 
         reset.addEventListener("click", () => {
             window.location.href = "index.html"
