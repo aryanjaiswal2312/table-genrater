@@ -129,6 +129,132 @@
             text-transform: capitalize;
             font-weight: bold;
         }
+
+        @media screen and (max-width: 480px) {
+            body {
+                background-image: url("background\ image.jpg");
+                padding-top: 100px;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .card {
+                width: 60%;
+                margin: auto;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 11px;
+                padding: 16px;
+                border: 1px solid #00b6c7;
+                border-radius: 10px;
+                box-shadow: 5px 5px 20px 4px #3a3ae35e;
+                font-family: math;
+                transition: box-shadow 4s;
+            }
+
+            .dateBox {
+                border: 1px solid #6459cdbd;
+                padding: 10px;
+                display: flex;
+                font-weight: bold;
+                text-align: start;
+                border-radius: 10px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .headingBox {
+                display: flex;
+                flex-direction: column;
+            }
+
+            h2 {
+                margin: auto;
+                font-size: 40px;
+                color: #2a2abdab;
+            }
+
+            div#user\ vlaue {
+                text-transform: capitalize;
+                font-size: 20px;
+                font-family: monospace;
+                margin: auto;
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+
+            input[type="number"] {
+                width: 60%;
+                margin: 5px auto 0px auto;
+                padding: 5px;
+                border-radius: 30px;
+                border: 1px solid #0000ff4a;
+            }
+
+            #last-box {
+                display: flex;
+                gap: 11px;
+                width: 100%;
+                margin: auto;
+            }
+
+            button#btn {
+                padding: 6px;
+                font-size: 17px;
+                border: none;
+                background: #249fbd4a;
+                border-radius: 29px;
+                width: 100%;
+                margin: auto;
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+
+            #reset {
+                padding: 5px;
+                font-size: 16px;
+                border: none;
+                background: #249fbd4a;
+                border-radius: 13px;
+                width: 70%;
+                margin: auto;
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+
+            button#btn {
+                padding: 6px;
+                font-size: 16px;
+                border: none;
+                background: #249fbd4a;
+                border-radius: 29px;
+                width: 100%;
+                margin: auto;
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+
+            input[type="number"] {
+                width: 100%;
+                margin: 5px auto 0px auto;
+                padding: 3px;
+                border-radius: 30px;
+                border: 1px solid #0000ff4a;
+            }
+
+            div#user\ vlaue {
+                text-transform: capitalize;
+                font-size: 16px;
+                font-family: monospace;
+                margin: auto;
+                display: grid;
+                grid-template-columns: auto auto;
+            }
+        }
     </style>
 </head>
 
@@ -150,7 +276,7 @@
         </div>
         <hr>
         <div id="user vlaue">
-            talbe of:
+            table of:
             <input type="number" id="tableof" placeholder="enter number">
             Up To:<input type="number" id="tableupto" min="1" max="10" placeholder="enter number">
             <div id="show table"></div>
