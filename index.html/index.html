@@ -7,12 +7,36 @@
     <title>table</title>
     <style>
         body {
-            background-image: url("background\ image.jpg");
+            color: white;
+            background-image: url("background-1792968_960_720.webp");
+            background-color: rgba(255, 255, 255, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            background-repeat: no-repeat;
+            background-size: cover;
             padding-top: 100px;
         }
 
+        .blur {
+            width: 50%;
+            border-radius:10px ;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+        }
+
+        button {
+            color: white;
+        }
+
+        #rendaminput {
+            width: 60%;
+            padding: 5px;
+        }
+
         .card {
-            width: 40%;
+            width: 85%;
             position: relative;
             margin: auto;
             text-align: center;
@@ -35,7 +59,7 @@
             margin: auto;
             font-weight: bold;
             font-size: 60px;
-            color: #0000ff6e;
+            color: #14ffe0ad;
         }
 
         input[type="number"] {
@@ -188,7 +212,7 @@
                 margin: auto;
                 font-weight: bold;
                 font-size: 45px;
-                color: #0000ff6e;
+                color: #14ffe0ad;
             }
         }
 
@@ -245,14 +269,14 @@
 
         @media screen and (max-width: 480px) {
             body {
-                background-image: url("background\ image.jpg");
+                background-image: url("background-1792968_960_720.webp");
                 padding-top: 100px;
                 background-size: cover;
                 background-repeat: no-repeat;
             }
 
             .card {
-                width: 60%;
+                width: 85%;
                 margin: auto;
                 text-align: center;
                 display: flex;
@@ -285,7 +309,7 @@
             h2 {
                 margin: auto;
                 font-size: 40px;
-                color: #2a2abdab;
+                color: #14ffe0ad;
             }
 
             div#user\ vlaue {
@@ -372,34 +396,37 @@
 </head>
 
 <body>
-    <div class="card">
-        <div class="dateBox">
-            <div>
-                Date : <span id="dateSpan"> </span>
+    <div class="blur">
+        <div class="card">
+            <div class="dateBox">
+                <div>
+                    Date : <span id="dateSpan"> </span>
+                </div>
+                <div>
+                    Time: <span id="timespan"></span>
+                </div>
             </div>
-            <div>
-                Time: <span id="timespan"></span>
+            <div class="headingBox">
+                <h2>Table</h2>
+                <div id="2btn">
+                    <button id="rendom">Rendem Table </button>
+                    <input type="number" id="rendaminput" name="rendaminput" placeholder="up to">
+                </div>
             </div>
-        </div>
-        <div class="headingBox">
-            <h2>Table</h2>
-            <div id="2btn">
-                <button id="rendom">Rendem Table </button>
+            <hr>
+            <div id="user vlaue">
+                table of:
+                <input type="number" id="tableof" placeholder="enter number">
+                Up To:<input type="number" id="tableupto" min="1" max="10" placeholder="enter number">
+                <div id="show table"></div>
             </div>
-        </div>
-        <hr>
-        <div id="user vlaue">
-            table of:
-            <input type="number" id="tableof" placeholder="enter number">
-            Up To:<input type="number" id="tableupto" min="1" max="10" placeholder="enter number">
-            <div id="show table"></div>
-        </div>
-        <div id="last-box">
-            <button id="btn"> show table </button>
-            <button id="reset"> reset </button>
-        </div>
+            <div id="last-box">
+                <button id="btn"> show table </button>
+                <button id="reset"> reset </button>
+            </div>
 
-        <p id="error"></p>
+            <p id="error"></p>
+        </div>
     </div>
     <script>
         let rendom = document.getElementById("rendom");
@@ -409,6 +436,9 @@
         let reset = document.getElementById("reset");
         let datespan = document.getElementById("dateSpan");
         let timespan = document.getElementById("timespan");
+
+
+
 
         setInterval(() => {
             let fulldate = new Date();
@@ -427,8 +457,8 @@
             let min = 1; let max = 10;
             let rendomVal = Math.floor(Math.random() * (max - min) + min);
             let table;
-
-            loop(rendomVal, 10);
+            let rendaminput = document.getElementById("rendaminput").value;
+            loop(rendomVal, +rendaminput);
             rendom.disabled = true;
             btn.disabled = true;
         })
